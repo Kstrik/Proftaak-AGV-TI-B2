@@ -1,5 +1,6 @@
 package Interface;
 
+<<<<<<< HEAD
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -30,5 +31,17 @@ public class Command<T>
         TURN,
         TURNDEGREES,
         STOP
+=======
+public class Command {
+    private String cmd;
+
+    public Command(String cmd) {
+        this.cmd = cmd;
+    }
+
+    @Override
+    public String toString() {
+        return cmd;
+>>>>>>> master
     }
 }

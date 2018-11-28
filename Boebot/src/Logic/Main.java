@@ -1,5 +1,6 @@
 package Logic;
 
+<<<<<<< HEAD
 import Interface.Command;
 import Interface.EngineControl;
 import TI.BoeBot;
@@ -53,5 +54,13 @@ public class Main {
 //            servo1.update();
 //            servo2.update();
 //        }
+=======
+import Interface.DriveControl;
+
+public class Main {
+
+    public static void main(String[] args) {
+        DriveControl driveControl = new DriveControl();
+>>>>>>> master
     }
 }

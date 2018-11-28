@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Boebot" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="Logic.Main" />
+    <module name="Boebot" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
