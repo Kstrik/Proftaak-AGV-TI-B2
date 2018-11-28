@@ -1,18 +1,22 @@
 package Logic;
 
-import Interface.CollisionDetector;
-import TI.BoeBot;
+import Hardware.ISensor;
+import Hardware.InfraredSensor;
+import Interface.InfraredConnection;
+
+import java.util.ArrayList;
 
 public class Main {
 
     public static void main(String[] args) {
-        CollisionDetector collisionDetector = new CollisionDetector();
+        /*ArrayList<ISensor> sensors = new ArrayList<>();
+        InfraredConnection infraredConnection = new InfraredConnection();
+        sensors.add(new InfraredSensor(infraredConnection));
 
-
-        while(true){
-            collisionDetector.update();
-            BoeBot.wait(1);
-        }
-
+        while(true) {
+            for(ISensor s : sensors) {
+                s.update();
+            }
+        }*/
     }
 }
