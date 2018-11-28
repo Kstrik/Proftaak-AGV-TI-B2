@@ -4,6 +4,11 @@ public interface IEngine {
 
 	void update();
 
-	void goToSpeed();
+	void goToSpeed(int speed);
 
+	void updateSpeed();
+
+	void setSpeed(int speed);
+
+	void stop();
 }
