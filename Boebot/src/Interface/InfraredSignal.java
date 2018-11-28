@@ -1,4 +1,8 @@
 package Interface;
 
-public class InfraredSignal {
+public class InfraredSignal implements ISignal {
+    @Override
+    public Command convertToCommand() {
+        return null;
+    }
 }

@@ -2,6 +2,6 @@ package Interface;
 
 public interface IContoller {
 
-	void onCommandReceived();
+	void onCommandReceived(Command cmd);
 
 }
