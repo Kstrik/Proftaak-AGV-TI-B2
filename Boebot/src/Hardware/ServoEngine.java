@@ -33,7 +33,6 @@ public class ServoEngine implements IEngine
 
     public void update()
     {
-        System.out.println(this.speed);
         if(this.timer.timeout())
         {
             if(!hasConstantSpeed)
@@ -47,25 +46,39 @@ public class ServoEngine implements IEngine
     {
         if(this.speed != this.finalSpeed)
         {
-            if(!this.isGoingForward)
+            if(this.isGoingForward)
             {
-                this.speed--;
+                if(!this.isReversed)
+                {
+                    this.speed--;
+                }
+                else
+                {
+                    this.speed++;
+                }
             }
             else
             {
-                this.speed++;
+                if(!this.isReversed)
+                {
+                    this.speed++;
+                }
+                else
+                {
+                    this.speed--;
+                }
             }
 
-            if(!this.isReversed)
-            {
-                this.servo.update(1300 + (1700 - this.speed));
-                BoeBot.wait(1);
-            }
-            else
-            {
+//            if(!this.isReversed)
+//            {
+//                this.servo.update(1300 + (1700 - this.speed));
+//                BoeBot.wait(1);
+//            }
+//            else
+//            {
                 this.servo.update(this.speed);
                 BoeBot.wait(1);
-            }
+//            }
 
             if(this.speed == this.finalSpeed)
             {
@@ -85,14 +98,29 @@ public class ServoEngine implements IEngine
             newSpeed = -200;
         }
 
+        if(!this.isReversed)
+        {
+            newSpeed *= -1;
+        }
+
         this.speed = this.servo.getPulseWidth();
         this.finalSpeed = 1500 + newSpeed;
 
         this.isGoingForward = false;
 
-        if(this.speed < finalSpeed)
+        if(this.isReversed)
         {
-            this.isGoingForward = true;
+            if(this.speed < this.finalSpeed)
+            {
+                this.isGoingForward = true;
+            }
+        }
+        else
+        {
+            if(this.speed > this.finalSpeed)
+            {
+                this.isGoingForward = true;
+            }
         }
 
         if(this.speed != this.finalSpeed)
@@ -112,20 +140,61 @@ public class ServoEngine implements IEngine
             newSpeed = -200;
         }
 
-        int servoSpeed = this.servo.getPulseWidth();
-
-        if(!this.isReversed)
-        {
-            newSpeed *= -1;
-        }
-
         this.speed = 1500 + newSpeed;
 
         this.finalSpeed = this.speed;
+
+        System.out.println("Final Speed: " + finalSpeed);
+        System.out.println("Speed: " + speed);
+
         this.isGoingForward = false;
         this.hasConstantSpeed = true;
         this.servo.update(this.speed);
         BoeBot.wait(1);
+    }
+
+    public void increaseSpeed(int speed)
+    {
+        if(speed > 0)
+        {
+            if(!this.isReversed)
+            {
+                if(this.speed + speed > 1700)
+                {
+                    speed = 1700;
+                }
+            }
+            else
+            {
+                if(this.speed - speed < 1300)
+                {
+                    speed = 1300;
+                }
+            }
+            this.setSpeed(this.speed + speed);
+        }
+    }
+
+    public void decreaseSpeed(int speed)
+    {
+        if(speed > 0)
+        {
+            if(!this.isReversed)
+            {
+                if(this.speed - speed < 1300)
+                {
+                    speed = 1300;
+                }
+            }
+            else
+            {
+                if(this.speed + speed > 1700)
+                {
+                    speed = 1700;
+                }
+            }
+            this.setSpeed(this.speed + speed);
+        }
     }
 
     public void stop()

@@ -1,91 +1,93 @@
 package Interface;
 
-import TI.BoeBot;
+import Hardware.ISensor;
+import Hardware.InfraredSensor;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
-public class InfraredConnection implements IReceiver {
-
-    private HashMap<Integer, EnumMovement.MovementType> movementOptions;
+public class InfraredConnection implements IConnection
+{
     private IContoller observer;
+    private ISensor infraredSensor;
 
     public InfraredConnection(IContoller observer)
     {
         this.observer = observer;
-        intitializeOptions();
+        this.infraredSensor = new InfraredSensor(5, this);
     }
 
-    public void intitializeOptions()
+    public void sendSignal()
     {
-        this.movementOptions = new HashMap<Integer, EnumMovement.MovementType>();
-        this.movementOptions.put(144, EnumMovement.MovementType.GOFORWARD);
-        this.movementOptions.put(2192, EnumMovement.MovementType.GOBACKWARD);
-        this.movementOptions.put(3216, EnumMovement.MovementType.TURNLEFT);
-        this.movementOptions.put(1168, EnumMovement.MovementType.TURNRIGHT);
-        //Stop knop
-        this.movementOptions.put(2872, EnumMovement.MovementType.STOP);
-        //Knop 1
-        this.movementOptions.put(16, EnumMovement.MovementType.MAKE_TRIANGLE);
-        //Knop 2
-        this.movementOptions.put(2064, EnumMovement.MovementType.MAKE_CIRCLE);
-        //Knop 3
-        this.movementOptions.put(1040, EnumMovement.MovementType.MAKE_RECTANGLE);
-
+        System.out.println("Infrared signal could not be send. No transmitter available!");
     }
 
-    public EnumMovement.MovementType getInput()
+    public void onSignalReceived(Object signal)
     {
-        int pulseLen = BoeBot.pulseIn(0, false, 6000);
-        int lengtes[] = new int[12];
+        InfraredSignal infraredSignal = new InfraredSignal((int[])signal);
+        Command command = infraredSignal.convertToCommand();
+        ArrayList<Object> parameters = new ArrayList<>();
 
-        if(pulseLen > 2000)
+        switch(command.getCommand())
         {
-            for(int i = 0; i < 12; i++)
+            case GOTOSPEED:
             {
-                lengtes[i] = BoeBot.pulseIn(0, false, 20000);
+                parameters.add(0);
+                System.out.println("Stop slowly");
+                break;
+            }
+            case GOFORWARD:
+            {
+                parameters.add(100);
+                System.out.println("Go forward");
+                break;
+            }
+            case GOBACKWARD:
+            {
+                parameters.add(-100);
+                System.out.println("Go backward");
+                break;
+            }
+            case TURNLEFT:
+            {
+                parameters.add(-100);
+                System.out.println("Turn left");
+                break;
+            }
+            case TURNRIGHT:
+            {
+                parameters.add(100);
+                System.out.println("Turn right");
+                break;
+            }
+            case STOP: {
+                parameters = null;
+                System.out.println("Stop");
+                break;
+            }
+            case MAKE_TRIANGLE:
+            {
+                System.out.println("Make triangle");
+                break;
+            }
+            case MAKE_CIRCLE:
+            {
+                System.out.println("Make circle");
+                break;
+            }
+            case MAKE_RECTANGLE:
+            {
+                System.out.println("Make rectangle");
+                break;
             }
         }
 
-        BoeBot.wait(10);
+        command.setParameters(parameters);
 
-        EnumMovement.MovementType result = this.movementOptions.get(convertPulsesToInt(lengtes));
-
-        if(result != null)
-        {
-            return result;
-        }
-        else
-        {
-            return EnumMovement.MovementType.NONE;
-        }
+        observer.onCommandReceived(command);
     }
 
-    public int convertPulsesToInt(int[] pulsLengths)
+    public void update()
     {
-        int number = 0;
-
-        for(int i = 0; i < pulsLengths.length; i++)
-        {
-            if(pulsLengths[i] >= 1000)
-            {
-                number++;
-            }
-
-            if(i != pulsLengths.length - 1)
-            {
-                number = number << 1;
-            }
-        }
-
-        System.out.println(number);
-
-        return number;
-    }
-
-    @Override
-    public void onSignalReceived() {
-        Command cmd = new Command("Test");
-        observer.onCommandReceived(cmd);
-
+        this.infraredSensor.update();
     }
 }

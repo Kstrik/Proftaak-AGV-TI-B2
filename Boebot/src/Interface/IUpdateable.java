@@ -1,5 +1,6 @@
 package Interface;
 
-public interface IUpdateable {
+public interface IUpdateable
+{
     void update();
 }

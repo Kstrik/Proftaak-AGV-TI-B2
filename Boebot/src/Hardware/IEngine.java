@@ -10,5 +10,9 @@ public interface IEngine {
 
 	void setSpeed(int speed);
 
+	void increaseSpeed(int speed);
+
+	void decreaseSpeed(int speed);
+
 	void stop();
 }

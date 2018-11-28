@@ -4,4 +4,5 @@ public interface IContoller {
 
 	void onCommandReceived(Command cmd);
 
+	void update();
 }

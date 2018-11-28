@@ -5,65 +5,60 @@ import Hardware.InfraredSensor;
 
 import java.util.ArrayList;
 
-public class DriveControl implements IContoller {
+public class DriveControl implements IContoller, IUpdateable
+{
+    private Communication communication;
+    private EngineControl engineControl;
+    private CollisionDetector collisionDetector;
+    private NotificationControl notificationControl;
 
-    public DriveControl() {
-        ArrayList<ISensor> sensors = new ArrayList<>();
-        Communication communication = new Communication(this);
-        InfraredConnection infraredConnection = new InfraredConnection(communication);
-        sensors.add(new InfraredSensor(infraredConnection));
+    public DriveControl()
+    {
+        this.communication = new Communication(this);
+        this.engineControl = new EngineControl();
+        this.collisionDetector = new CollisionDetector(this);
+        this.notificationControl = new NotificationControl();
+    }
 
-        while(true) {
-            for(ISensor s : sensors) {
-                s.update();
+    public void onCommandReceived(Command command)
+    {
+        switch(command.getCommand())
+        {
+            case GOFORWARD:
+            case GOBACKWARD:
+            case GOTOSPEED:
+            case TURNLEFT:
+            case TURNRIGHT:
+            case TURN:
+            case TURNDEGREES:
+            case STOP:
+            {
+                this.engineControl.update(command);
+                break;
+            }
+            case PLAYSOUND:
+            case STOPSOUND:
+            case CHANGESOUND:
+            {
+                this.notificationControl.update(command);
+                break;
             }
         }
     }
 
-    @Override
-    public void onCommandReceived(Command cmd) {
-        System.out.println(cmd);
-        /*switch(getInput())
+    public void update()
+    {
+        this.collisionDetector.update();
+
+        if(!this.collisionDetector.collisionDetected())
         {
-            case GOFORWARD:
-            {
-                System.out.println("Forward");
-                break;
-            }
-            case GOBACKWARD:
-            {
-                System.out.println("Backward");
-                break;
-            }
-            case TURNLEFT:
-            {
-                System.out.println("Left");
-                break;
-            }
-            case TURNRIGHT:
-            {
-                System.out.println("Right");
-                break;
-            }
-            case STOP: {
-                System.out.println("Stop");
-                break;
-            }
-            case MAKE_TRIANGLE:
-            {
-                System.out.println("Make triangle");
-                break;
-            }
-            case MAKE_CIRCLE:
-            {
-                System.out.println("Make circle");
-                break;
-            }
-            case MAKE_RECTANGLE:
-            {
-                System.out.println("Make rectangle");
-                break;
-            }
-        }*/
+            this.communication.update();
+            this.engineControl.update(null);
+        }
+        else
+        {
+            Command command = new Command(Command.Commands.STOP, null);
+            this.engineControl.update(command);
+        }
     }
 }

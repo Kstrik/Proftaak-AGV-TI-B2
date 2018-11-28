@@ -5,6 +5,7 @@ import Hardware.ServoEngine;
 import TI.BoeBot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class EngineControl
 {
@@ -19,6 +20,13 @@ public class EngineControl
 
     public void turn(int turnSpeed)
     {
+        Command command = new Command(Command.Commands.STOP, null);
+
+        for(IEngine engine : this.engines)
+        {
+            engine.stop();
+        }
+
         if(turnSpeed > 100)
         {
             turnSpeed = 100;
@@ -29,13 +37,20 @@ public class EngineControl
         }
 
         this.engines.get(0).setSpeed(turnSpeed);
-        this.engines.get(1).setSpeed(turnSpeed * -1);
+        this.engines.get(1).setSpeed(turnSpeed);
 
         BoeBot.wait(1);
     }
 
     public void turnDegrees(int degrees, int turnSpeed)
     {
+        Command command = new Command(Command.Commands.STOP, null);
+
+        for(IEngine engine : this.engines)
+        {
+            engine.stop();
+        }
+
         if(turnSpeed > 100)
         {
             turnSpeed = 100;
@@ -56,7 +71,7 @@ public class EngineControl
 
         double interval = ((((double)2150 / (double)360) / (double)100) * (double)turnSpeed) * (double)degrees;
 
-        System.out.println(interval);
+        //System.out.println(interval);
 
         this.engines.get(0).setSpeed(turnSpeed);
         this.engines.get(1).setSpeed(turnSpeed * -1);
@@ -68,13 +83,12 @@ public class EngineControl
 
     public void update(Command command)
     {
-        if(true)
+        if(command != null)
         {
-            if(command != null)
-            {
-                excecuteCommand(command);
-            }
-
+            excecuteCommand(command);
+        }
+        else
+        {
             for(IEngine engine : this.engines)
             {
                 engine.update();
@@ -86,6 +100,8 @@ public class EngineControl
     {
         switch(command.getCommand())
         {
+            case GOFORWARD:
+            case GOBACKWARD:
             case GOTOSPEED:
             {
                 for(IEngine engine : this.engines)
@@ -94,10 +110,15 @@ public class EngineControl
                 }
 
                 break;
+//                this.engines.get(0).goToSpeed((int)command.getParameters().get(0) * -1);
+//                this.engines.get(1).goToSpeed((int)command.getParameters().get(0));
+
+                //break;
             }
+            case TURNLEFT:
+            case TURNRIGHT:
             case TURN:
             {
-                System.out.println("Turn");
                 turn((int)command.getParameters().get(0));
 
                 break;
@@ -110,7 +131,6 @@ public class EngineControl
             }
             case STOP:
             {
-                System.out.println("Stop");
                 for(IEngine engine : this.engines)
                 {
                     engine.stop();

@@ -1,7 +1,5 @@
 package Interface;
 
-<<<<<<< HEAD
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Command<T>
@@ -15,6 +13,12 @@ public class Command<T>
         this.parameters = parameters;
     }
 
+    public Command(Commands command, ArrayList<T> parameters)
+    {
+        this.command = command;
+        this.parameters = parameters;
+    }
+
     public Commands getCommand()
     {
         return this.command;
@@ -25,23 +29,29 @@ public class Command<T>
         return this.parameters;
     }
 
+    public void setParameters(ArrayList<T> parameters)
+    {
+        this.parameters = parameters;
+    }
+
     public enum Commands
     {
         GOTOSPEED,
         TURN,
         TURNDEGREES,
-        STOP
-=======
-public class Command {
-    private String cmd;
-
-    public Command(String cmd) {
-        this.cmd = cmd;
-    }
-
-    @Override
-    public String toString() {
-        return cmd;
->>>>>>> master
+        GOFORWARD,
+        GOBACKWARD,
+        TURNLEFT,
+        TURNRIGHT,
+        INCREASELEFTSPEED,
+        INCREASERIGHTSPEED,
+        STOP,
+        MAKE_RECTANGLE,
+        MAKE_CIRCLE,
+        MAKE_TRIANGLE,
+        PLAYSOUND,
+        STOPSOUND,
+        CHANGESOUND,
+        NONE
     }
 }
