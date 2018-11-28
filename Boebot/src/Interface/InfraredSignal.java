@@ -27,11 +27,11 @@ public class InfraredSignal<T> implements ISignal
         //Slow down knop
         this.commandBindings.put(2960, Command.Commands.GOTOSPEED);
         //Knop 1
-        this.commandBindings.put(16, Command.Commands.MAKE_TRIANGLE);
+        this.commandBindings.put(16, Command.Commands.MAKETRIANGLE);
         //Knop 2
-        this.commandBindings.put(2064, Command.Commands.MAKE_CIRCLE);
+        this.commandBindings.put(2064, Command.Commands.MAKECIRCLE);
         //Knop 3
-        this.commandBindings.put(1040, Command.Commands.MAKE_RECTANGLE);
+        this.commandBindings.put(1040, Command.Commands.MAKERECTANGLE);
     }
 
     public int convertPulsesToInt()

@@ -64,18 +64,21 @@ public class InfraredConnection implements IConnection
                 System.out.println("Stop");
                 break;
             }
-            case MAKE_TRIANGLE:
+            case MAKETRIANGLE:
             {
+                parameters = null;
                 System.out.println("Make triangle");
                 break;
             }
-            case MAKE_CIRCLE:
+            case MAKECIRCLE:
             {
+                parameters = null;
                 System.out.println("Make circle");
                 break;
             }
-            case MAKE_RECTANGLE:
+            case MAKERECTANGLE:
             {
+                parameters = null;
                 System.out.println("Make rectangle");
                 break;
             }

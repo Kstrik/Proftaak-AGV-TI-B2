@@ -31,6 +31,9 @@ public class DriveControl implements IContoller, IUpdateable
             case TURNRIGHT:
             case TURN:
             case TURNDEGREES:
+            case MAKETRIANGLE:
+            case MAKECIRCLE:
+            case MAKERECTANGLE:
             case STOP:
             {
                 this.engineControl.update(command);

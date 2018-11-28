@@ -74,11 +74,47 @@ public class EngineControl
         //System.out.println(interval);
 
         this.engines.get(0).setSpeed(turnSpeed);
-        this.engines.get(1).setSpeed(turnSpeed * -1);
+        this.engines.get(1).setSpeed(turnSpeed);
 
         BoeBot.wait((int)interval);
         this.engines.get(0).stop();
         this.engines.get(1).stop();
+    }
+
+    public void driveInSquare()
+    {
+        for(int i = 0; i < 4; i++)
+        {
+            this.engines.get(0).setSpeed(-100);
+            this.engines.get(1).setSpeed(100);
+            BoeBot.wait(5000);
+            this.engines.get(0).stop();
+            this.engines.get(1).stop();
+            BoeBot.wait(1000);
+            turnDegrees(90, 100);
+            BoeBot.wait(1000);
+        }
+    }
+
+    public void driveInCircle()
+    {
+        this.engines.get(0).setSpeed(-40);
+        this.engines.get(1).setSpeed(100);
+    }
+
+    public void driveInTriangle()
+    {
+        for(int i = 0; i < 3; i++)
+        {
+            this.engines.get(0).setSpeed(-100);
+            this.engines.get(1).setSpeed(100);
+            BoeBot.wait(5000);
+            this.engines.get(0).stop();
+            this.engines.get(1).stop();
+            BoeBot.wait(1000);
+            turnDegrees(135, 100);
+            BoeBot.wait(1000);
+        }
     }
 
     public void update(Command command)
@@ -136,6 +172,21 @@ public class EngineControl
                     engine.stop();
                 }
 
+                break;
+            }
+            case MAKETRIANGLE:
+            {
+                driveInTriangle();
+                break;
+            }
+            case MAKECIRCLE:
+            {
+                driveInCircle();
+                break;
+            }
+            case MAKERECTANGLE:
+            {
+                driveInSquare();
                 break;
             }
         }
