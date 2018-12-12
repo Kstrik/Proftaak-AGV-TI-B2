@@ -1,5 +1,6 @@
 package Interface;
 
+import Hardware.ICommunicationSensor;
 import Hardware.ISensor;
 import Hardware.InfraredSensor;
 
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 public class InfraredConnection implements IConnection
 {
     private IContoller observer;
-    private ISensor infraredSensor;
+    private ICommunicationSensor infraredSensor;
 
     public InfraredConnection(IContoller observer)
     {
@@ -16,7 +17,7 @@ public class InfraredConnection implements IConnection
         this.infraredSensor = new InfraredSensor(5, this);
     }
 
-    public void sendSignal()
+    public void sendSignal(Object signal)
     {
         System.out.println("Infrared signal could not be send. No transmitter available!");
     }
@@ -80,6 +81,12 @@ public class InfraredConnection implements IConnection
             {
                 parameters = null;
                 System.out.println("Make rectangle");
+                break;
+            }
+            case TOGGLELINETRACING:
+            {
+                parameters = null;
+                System.out.println("Toggle Line tracing");
                 break;
             }
         }

@@ -9,7 +9,7 @@ public class WifiConnection implements IConnection
         this.observer = observer;
     }
 
-    public void sendSignal()
+    public void sendSignal(Object signal)
     {
 
     }

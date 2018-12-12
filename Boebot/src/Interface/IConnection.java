@@ -2,7 +2,7 @@ package Interface;
 
 public interface IConnection<T>
 {
-	void sendSignal();
+	void sendSignal(T signal);
 
 	void onSignalReceived(T signal);
 

@@ -45,6 +45,11 @@ public class Command<T>
         TURNRIGHT,
         INCREASELEFTSPEED,
         INCREASERIGHTSPEED,
+        SETLEFTSPEED,
+        SETRIGHTPEED,
+        SETSPEED,
+        STOPLEFT,
+        STOPRIGHT,
         STOP,
         MAKERECTANGLE,
         MAKECIRCLE,
@@ -52,6 +57,9 @@ public class Command<T>
         PLAYSOUND,
         STOPSOUND,
         CHANGESOUND,
+        STARTFLASHCOLOR,
+        STOPFLASHCOLOR,
+        TOGGLELINETRACING,
         NONE
     }
 }

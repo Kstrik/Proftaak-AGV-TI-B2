@@ -11,7 +11,7 @@ public class Speaker
 
     private Timer timer;
 
-    private int delay;
+    //private int delay;
 
     public Speaker(int pin, int delay)
     {
@@ -19,7 +19,7 @@ public class Speaker
         this.frequentie = 0;
         this.isOn = false;
         this.timer = new Timer(5);
-        this.delay = delay;
+        //this.delay = delay;
     }
 
     public void turnOn()
@@ -51,6 +51,5 @@ public class Speaker
     public void play()
     {
         BoeBot.freqOut(this.pin, this.frequentie, 50);
-        BoeBot.wait(this.delay);
     }
 }

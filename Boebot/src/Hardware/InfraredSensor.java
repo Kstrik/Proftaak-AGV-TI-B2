@@ -5,9 +5,7 @@ import Interface.IConnection;
 import TI.BoeBot;
 import TI.Timer;
 
-import java.util.Arrays;
-
-public class InfraredSensor implements ISensor
+public class InfraredSensor implements ICommunicationSensor
 {
     private int pin;
     private IConnection infraredConnection;
@@ -18,7 +16,7 @@ public class InfraredSensor implements ISensor
         this.infraredConnection = infraredConnection;
     }
 
-    public int[] getInput()
+    public int[] receive()
     {
         int pulseLen = BoeBot.pulseIn(this.pin, false, 6000);
         int lenghts[] = new int[12];
@@ -40,9 +38,14 @@ public class InfraredSensor implements ISensor
         }
     }
 
+    public void transmit(Object data)
+    {
+        System.out.println("Infrared signal could not be send. No transmitter available!");
+    }
+
     public void update()
     {
-        int[] pulsLengths = getInput();
+        int[] pulsLengths = receive();
 
         if(pulsLengths != null)
         {

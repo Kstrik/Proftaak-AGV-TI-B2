@@ -21,10 +21,39 @@ public class Communication implements IContoller
         observer.onCommandReceived(command);
     }
 
+    public void transmitData(int data, CommunicationTypes communicationType)
+    {
+        switch(communicationType)
+        {
+            case INFRARED:
+            {
+                System.out.println("Infrared signal could not be send. No transmitter available!");
+                break;
+            }
+            case BLUETOOTH:
+            {
+                this.bluetoothConnection.sendSignal(data);
+                break;
+            }
+            case WIFI:
+            {
+                this.wifiConnection.sendSignal(data);
+                break;
+            }
+        }
+    }
+
     public void update()
     {
         this.infraredConnection.update();
         this.bluetoothConnection.update();
         this.wifiConnection.update();
+    }
+
+    public enum CommunicationTypes
+    {
+        INFRARED,
+        BLUETOOTH,
+        WIFI
     }
 }

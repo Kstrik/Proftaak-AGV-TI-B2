@@ -1,9 +1,8 @@
 package Interface;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
-public class InfraredSignal<T> implements ISignal
+public class InfraredSignal implements ISignal
 {
     private int[] pulsLengths;
     private HashMap<Integer, Command.Commands> commandBindings;
@@ -32,6 +31,8 @@ public class InfraredSignal<T> implements ISignal
         this.commandBindings.put(2064, Command.Commands.MAKECIRCLE);
         //Knop 3
         this.commandBindings.put(1040, Command.Commands.MAKERECTANGLE);
+        //Knop Toggle Line Tracing
+        this.commandBindings.put(4048, Command.Commands.TOGGLELINETRACING);
     }
 
     public int convertPulsesToInt()

@@ -174,6 +174,29 @@ public class EngineControl
 
                 break;
             }
+            case SETLEFTSPEED:
+            {
+                this.engines.get(0).setSpeed((int)command.getParameters().get(0));
+            }
+            case SETRIGHTPEED:
+            {
+                this.engines.get(1).setSpeed((int)command.getParameters().get(0));
+            }
+            case SETSPEED:
+            {
+                for(IEngine engine : this.engines)
+                {
+                    engine.setSpeed((int)command.getParameters().get(0));
+                }
+            }
+            case STOPLEFT:
+            {
+                this.engines.get(0).stop();
+            }
+            case STOPRIGHT:
+            {
+                this.engines.get(1).stop();
+            }
             case MAKETRIANGLE:
             {
                 driveInTriangle();
@@ -190,5 +213,25 @@ public class EngineControl
                 break;
             }
         }
+    }
+
+    public boolean isStationairy()
+    {
+        int stationairyCount = 0;
+
+        for(IEngine engine : this.engines)
+        {
+            if(engine.isStationary())
+            {
+                stationairyCount++;
+            }
+        }
+
+        if(stationairyCount == this.engines.size())
+        {
+            return true;
+        }
+
+        return false;
     }
 }

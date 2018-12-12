@@ -153,6 +153,16 @@ public class ServoEngine implements IEngine
         BoeBot.wait(1);
     }
 
+    public boolean isStationary()
+    {
+        if(this.speed == 1500)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     public void increaseSpeed(int speed)
     {
         if(speed > 0)

@@ -8,7 +8,7 @@ import javax.imageio.metadata.IIOMetadataController;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class CollisionDetector implements IUltrasoneUpdate, IAntennaUpdate, IUpdateable
+public class CollisionDetector implements IUltrasoneUpdate, IAntennaUpdate
 {
     private ISensor ultrasone;
     //private ISensor antennaL;
