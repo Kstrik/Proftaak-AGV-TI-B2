@@ -68,7 +68,7 @@ public class Vector2D
 
 	public static Vector2D Direction(Vector2D a, Vector2D b)
 	{
-		return Vector2D.Normalize(Vector2D.Subtract(a, b));
+		return Vector2D.Normalize(Vector2D.Subtract(b, a));
 	}
 	
 	public static Vector2D Up()

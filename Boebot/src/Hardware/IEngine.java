@@ -10,6 +10,8 @@ public interface IEngine {
 
 	void setSpeed(int speed);
 
+	void setTurnSpeed(int speed);
+
 	boolean isStationary();
 
 	void increaseSpeed(int speed);

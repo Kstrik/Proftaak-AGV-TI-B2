@@ -36,8 +36,8 @@ public class EngineControl
             turnSpeed = -100;
         }
 
-        this.engines.get(0).setSpeed(turnSpeed);
-        this.engines.get(1).setSpeed(turnSpeed);
+        this.engines.get(0).setTurnSpeed(turnSpeed);
+        this.engines.get(1).setTurnSpeed(turnSpeed);
 
         BoeBot.wait(1);
     }
@@ -73,8 +73,8 @@ public class EngineControl
 
         //System.out.println(interval);
 
-        this.engines.get(0).setSpeed(turnSpeed);
-        this.engines.get(1).setSpeed(turnSpeed);
+        this.engines.get(0).setTurnSpeed(turnSpeed);
+        this.engines.get(1).setTurnSpeed(turnSpeed);
 
         BoeBot.wait((int)interval);
         this.engines.get(0).stop();
@@ -177,10 +177,12 @@ public class EngineControl
             case SETLEFTSPEED:
             {
                 this.engines.get(0).setSpeed((int)command.getParameters().get(0));
+                break;
             }
             case SETRIGHTPEED:
             {
                 this.engines.get(1).setSpeed((int)command.getParameters().get(0));
+                break;
             }
             case SETSPEED:
             {
@@ -188,14 +190,17 @@ public class EngineControl
                 {
                     engine.setSpeed((int)command.getParameters().get(0));
                 }
+                break;
             }
             case STOPLEFT:
             {
                 this.engines.get(0).stop();
+                break;
             }
             case STOPRIGHT:
             {
                 this.engines.get(1).stop();
+                break;
             }
             case MAKETRIANGLE:
             {

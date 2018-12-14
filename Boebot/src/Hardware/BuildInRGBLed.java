@@ -38,6 +38,12 @@ public class BuildInRGBLed
 
     public void setIsFlashing(boolean isFlashing)
     {
+        if(this.isFlashing)
+        {
+            BoeBot.rgbSet(pin, Color.getHSBColor(0.0f, 0.0f, 0.0f));
+            BoeBot.rgbShow();
+        }
+
         this.isFlashing = isFlashing;
         this.isOn = isFlashing;
     }

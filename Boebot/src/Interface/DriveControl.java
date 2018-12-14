@@ -21,16 +21,17 @@ public class DriveControl implements IContoller
     public DriveControl()
     {
         Path path = new Path();
+        path.addPoint(new Vector2D(0, 0));
         path.addPoint(new Vector2D(0, 1));
-        path.addPoint(new Vector2D(1, 1));
-        path.addPoint(new Vector2D(2, 1));
-        path.addPoint(new Vector2D(2, 2));
+        path.addPoint(new Vector2D(0, 2));
+        path.addPoint(new Vector2D(1, 2));
+        path.addPoint(new Vector2D(1, 3));
 
         this.communication = new Communication(this);
         this.engineControl = new EngineControl();
         this.collisionDetector = new CollisionDetector(this);
         this.notificationControl = new NotificationControl();
-        this.lineDriver = new LineDriver(this, 50, false, new PathFinder(Vector2D.Zero(), Vector2D.Up(), new Grid(10, 10), path), false, this.notificationControl);
+        this.lineDriver = new LineDriver(this, 50, false, new PathFinder(Vector2D.Up(), new Grid(10, 10), path), true, this.notificationControl);
         this.lastCommand = null;
     }
 
@@ -93,7 +94,6 @@ public class DriveControl implements IContoller
         if(!this.collisionDetector.collisionDetected())
         {
             this.communication.update();
-
             if(this.lineDriver.isInControl)
             {
                 this.lineDriver.update();
@@ -105,8 +105,12 @@ public class DriveControl implements IContoller
         }
         else
         {
-            if(this.lastCommand.getCommand() != Command.Commands.GOBACKWARD && !this.engineControl.isStationairy())
+            if(this.lastCommand.getCommand() == Command.Commands.GOBACKWARD && this.engineControl.isStationairy())
             {
+
+//            }
+//            if(this.lastCommand.getCommand() != Command.Commands.GOBACKWARD && !this.engineControl.isStationairy())
+//            {
                 Command command = new Command(Command.Commands.STOP, null);
                 this.engineControl.update(command);
             }

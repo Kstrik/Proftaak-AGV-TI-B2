@@ -3,16 +3,19 @@ package Hardware;
 import Interface.IConnection;
 import TI.BoeBot;
 import TI.SerialConnection;
+import TI.Timer;
 
 public class Bluetooth implements ICommunicationSensor
 {
     private SerialConnection serialConnection;
     private IConnection bluetoothConnection;
+    private Timer timer;
 
     public Bluetooth(int baudRate, IConnection bluetoothConnection)
     {
         this.serialConnection = new SerialConnection(baudRate);
         this.bluetoothConnection = bluetoothConnection;
+        this.timer = new Timer(200);
     }
 
     public Integer receive()
@@ -40,12 +43,15 @@ public class Bluetooth implements ICommunicationSensor
 
     public void update()
     {
-        int data = receive();
-
-        if(data != 0)
+        if(this.timer.timeout())
         {
-            this.bluetoothConnection.onSignalReceived(data);
-            System.out.println(data);
+            int data = receive();
+
+            if(data != 0)
+            {
+                this.bluetoothConnection.onSignalReceived(data);
+                System.out.println(data);
+            }
         }
     }
 }

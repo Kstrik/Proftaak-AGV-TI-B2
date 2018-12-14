@@ -140,12 +140,48 @@ public class ServoEngine implements IEngine
             newSpeed = -200;
         }
 
+
+        //New Code
+        if(!this.isReversed)
+        {
+            this.speed = 1500 - newSpeed;
+        }
+        else
+        {
+            this.speed = 1500 + newSpeed;
+        }
+
+        //Old code
+        //this.speed = 1500 + newSpeed;
+
+        this.finalSpeed = this.speed;
+
+        //System.out.println("Final Speed: " + finalSpeed);
+        //System.out.println("Speed: " + speed);
+
+        this.isGoingForward = false;
+        this.hasConstantSpeed = true;
+        this.servo.update(this.speed);
+        BoeBot.wait(1);
+    }
+
+    public void setTurnSpeed(int newSpeed)
+    {
+        if(newSpeed > 200)
+        {
+            newSpeed = 200;
+        }
+        else if(newSpeed < -200)
+        {
+            newSpeed = -200;
+        }
+
         this.speed = 1500 + newSpeed;
 
         this.finalSpeed = this.speed;
 
-        System.out.println("Final Speed: " + finalSpeed);
-        System.out.println("Speed: " + speed);
+        //System.out.println("Final Speed: " + finalSpeed);
+        //System.out.println("Speed: " + speed);
 
         this.isGoingForward = false;
         this.hasConstantSpeed = true;

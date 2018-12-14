@@ -2,6 +2,7 @@ package Interface;
 
 import Logic.PathFinder;
 import TI.BoeBot;
+import TI.Timer;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -21,6 +22,8 @@ public class LineDriver implements IContoller
     private PathFinder pathFinder;
     private boolean isFollowingPath;
 
+    private Timer timer;
+
     public LineDriver(IContoller driveControl, int speed, boolean startsOnItersection, PathFinder pathFinder, boolean isFollowingPath, NotificationControl notificationControl)
     {
         this.driveControl = driveControl;
@@ -35,6 +38,8 @@ public class LineDriver implements IContoller
 
         this.pathFinder = pathFinder;
         this.isFollowingPath = isFollowingPath;
+
+        this.timer = new Timer(100);
     }
 
     public void activateLineTracing()
@@ -58,6 +63,7 @@ public class LineDriver implements IContoller
 
     public void deactivateLineTracing()
     {
+        System.out.println("Deactivate line sensor");
         this.isInControl = false;
 
         this.driveControl.onCommandReceived(new Command(Command.Commands.STOP, null));
@@ -91,11 +97,11 @@ public class LineDriver implements IContoller
 
     public void onIntersectionDetected()
     {
-        //this.isOnIntersection = true;
-        //this.driveControl.onCommandReceived(new Command(Command.Commands.STOP, null));
+        this.isOnIntersection = true;
+        this.driveControl.onCommandReceived(new Command(Command.Commands.STOP, null));
 
-        //BoeBot.wait(5);
-
+        BoeBot.wait(5);
+;
         ArrayList<Object> parameters = new ArrayList<>();
 
         if(this.isFollowingPath)
@@ -104,26 +110,42 @@ public class LineDriver implements IContoller
             {
                 case TURNLEFT:
                 {
-                    parameters.add(this.speed * -1);
+//                    parameters.add(Color.getHSBColor(0.5F, 1.0F, 1.0F));
+//                    this.notificationControl.excecuteCommand(new Command(Command.Commands.STARTFLASHCOLOR, parameters));
+//                    parameters.clear();
+                    parameters.add(90);
+                    parameters.add(-200);
                     this.driveControl.onCommandReceived(new Command(Command.Commands.TURNDEGREES, parameters));
+                    System.out.println("TURNLEFT");
                     break;
                 }
                 case TURNRIGHT:
                 {
-                    parameters.add(this.speed);
+//                    parameters.add(Color.getHSBColor(1.0F, 1.0F, 1.0F));
+//                    this.notificationControl.excecuteCommand(new Command(Command.Commands.STARTFLASHCOLOR, parameters));
+//                    parameters.clear();
+                    parameters.add(90);
+                    parameters.add(200);
                     this.driveControl.onCommandReceived(new Command(Command.Commands.TURNDEGREES, parameters));
+                    System.out.println("TURNRIGHT");
                     break;
                 }
                 case GOFORWARD:
                 {
+//                    parameters.add(Color.getHSBColor(0.32F, 1.0F, 1.0F));
+//                    this.notificationControl.excecuteCommand(new Command(Command.Commands.STARTFLASHCOLOR, parameters));
+//                    parameters.clear();
                     parameters.add(this.speed);
                     this.driveControl.onCommandReceived(new Command(Command.Commands.SETSPEED, parameters));
                     BoeBot.wait(500);
                     this.isOnIntersection = false;
+                    System.out.println("GO FORWARD");
                     break;
                 }
                 case FINISHED:
                 {
+                    parameters.add(Color.getHSBColor(0.32F, 1.0F, 1.0F));
+                    this.notificationControl.excecuteCommand(new Command(Command.Commands.STARTFLASHCOLOR, parameters));
                     break;
                 }
             }
@@ -163,6 +185,9 @@ public class LineDriver implements IContoller
 
     public void update()
     {
-        this.lineDetector.update();
+        if(this.timer.timeout())
+        {
+            this.lineDetector.update();
+        }
     }
 }
