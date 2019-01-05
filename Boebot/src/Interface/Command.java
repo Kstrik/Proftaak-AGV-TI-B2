@@ -60,6 +60,7 @@ public class Command<T>
         STARTFLASHCOLOR,
         STOPFLASHCOLOR,
         TOGGLELINETRACING,
+        RECEIVEPATH,
         NONE
     }
 }

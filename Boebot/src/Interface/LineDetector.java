@@ -25,10 +25,8 @@ public class LineDetector
         for(LineSensor lineSensor : this.lineSensors)
         {
             lineSensor.update();
-            System.out.print(lineSensor.getLastValue());
-            System.out.print(" : ");
         }
-        System.out.println("");
+
         if(this.lineSensors[1].getLastValue() > 1400)
         {
             return true;
@@ -39,7 +37,6 @@ public class LineDetector
 
     public void update()
     {
-        System.out.println("Linedriver Update");
         for(ISensor lineSensor : this.lineSensors)
         {
             lineSensor.update();
@@ -53,7 +50,6 @@ public class LineDetector
 //        }
         if(this.lineSensors[0].getLastValue() > 1400 && this.lineSensors[1].getLastValue() > 1400 && this.lineSensors[2].getLastValue() > 1400)
         {
-            System.out.println("Intersection");
             this.lineDriver.onIntersectionDetected();
         }
         else
@@ -61,19 +57,16 @@ public class LineDetector
             if(this.lineSensors[2].getLastValue() > 1400)
             {
                 //Right
-                System.out.println("Right");
                 this.lineDriver.onRightLineDetected();
             }
             else if(this.lineSensors[0].getLastValue() > 1400)
             {
                 //Left
-                System.out.println("Left");
                 this.lineDriver.onLeftLineDetected();
             }
             else
             {
                 //Going forward
-                System.out.println("Middle");
                 this.lineDriver.onMiddleLineDetected();
             }
         }

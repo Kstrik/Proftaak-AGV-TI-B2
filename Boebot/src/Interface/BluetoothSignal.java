@@ -33,6 +33,8 @@ public class BluetoothSignal implements ISignal
         this.commandBindings.put(117, Command.Commands.MAKERECTANGLE);
         //Knop Toggle Line Tracing L
         this.commandBindings.put(108, Command.Commands.TOGGLELINETRACING);
+        //Knop Receive Path K
+        this.commandBindings.put(107, Command.Commands.RECEIVEPATH);
     }
 
     public Command convertToCommand()
