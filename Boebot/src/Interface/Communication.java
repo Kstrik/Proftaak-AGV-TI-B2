@@ -46,7 +46,7 @@ public class Communication implements IContoller
     public void update()
     {
         this.infraredConnection.update();
-        //this.bluetoothConnection.update();
+        this.bluetoothConnection.update();
         //this.wifiConnection.update();
     }
 

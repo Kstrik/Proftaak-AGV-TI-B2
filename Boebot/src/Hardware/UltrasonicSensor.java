@@ -17,7 +17,7 @@ public class UltrasonicSensor implements ISensor
         this.pinInput = pinInput;
         this.pinOutput = pinOutput;
         this.observer = observer;
-        this.timer = new Timer(50);
+        this.timer = new Timer(100);
     }
 
     public void update()
@@ -29,6 +29,7 @@ public class UltrasonicSensor implements ISensor
             BoeBot.digitalWrite(pinInput, false);
 
             int pulse = BoeBot.pulseIn(pinOutput, true, 10000);
+            BoeBot.wait(1);
 
 //            if(pulse != -2 && pulse != 16 && pulse != 17)
 //            {
@@ -37,7 +38,8 @@ public class UltrasonicSensor implements ISensor
 
             this.observer.onUltrasoneUpdate(pulse);
 
-            this.timer.setInterval(50);
+            //this.timer.setInterval(50);
         }
+        BoeBot.wait(10);
     }
 }

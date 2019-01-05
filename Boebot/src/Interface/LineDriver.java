@@ -1,6 +1,9 @@
 package Interface;
 
+import Hardware.Bluetooth;
+import Logic.Path;
 import Logic.PathFinder;
+import Logic.Vector2D;
 import TI.BoeBot;
 import TI.Timer;
 
@@ -22,6 +25,8 @@ public class LineDriver implements IContoller
     private PathFinder pathFinder;
     private boolean isFollowingPath;
 
+    private Bluetooth bluetoothModule;
+
     private Timer timer;
 
     public LineDriver(IContoller driveControl, int speed, boolean startsOnItersection, PathFinder pathFinder, boolean isFollowingPath, NotificationControl notificationControl)
@@ -38,6 +43,8 @@ public class LineDriver implements IContoller
 
         this.pathFinder = pathFinder;
         this.isFollowingPath = isFollowingPath;
+
+        this.bluetoothModule = new Bluetooth(115200);
 
         this.timer = new Timer(100);
     }
@@ -63,7 +70,7 @@ public class LineDriver implements IContoller
 
     public void deactivateLineTracing()
     {
-        System.out.println("Deactivate line sensor");
+        System.out.println("Deactivate line tracing");
         this.isInControl = false;
 
         this.driveControl.onCommandReceived(new Command(Command.Commands.STOP, null));
@@ -72,7 +79,6 @@ public class LineDriver implements IContoller
     public void onRightLineDetected()
     {
         ArrayList<Object> parameters = new ArrayList<>();
-        System.out.println("Right");
         parameters.add(this.speed);
         this.driveControl.onCommandReceived(new Command(Command.Commands.SETLEFTSPEED, parameters));
         this.driveControl.onCommandReceived(new Command(Command.Commands.STOPRIGHT, null));
@@ -81,7 +87,6 @@ public class LineDriver implements IContoller
     public void onLeftLineDetected()
     {
         ArrayList<Object> parameters = new ArrayList<>();
-        System.out.println("Left");
         parameters.add(this.speed);
         this.driveControl.onCommandReceived(new Command(Command.Commands.SETRIGHTPEED, parameters));
         this.driveControl.onCommandReceived(new Command(Command.Commands.STOPLEFT, null));
@@ -90,18 +95,17 @@ public class LineDriver implements IContoller
     public void onMiddleLineDetected()
     {
         ArrayList<Object> parameters = new ArrayList<>();
-        System.out.println("Middle");
         parameters.add(this.speed);
         this.driveControl.onCommandReceived(new Command(Command.Commands.SETSPEED, parameters));
     }
 
     public void onIntersectionDetected()
     {
+        //System.out.println("Intersection");
         this.isOnIntersection = true;
-        this.driveControl.onCommandReceived(new Command(Command.Commands.STOP, null));
 
         BoeBot.wait(5);
-;
+
         ArrayList<Object> parameters = new ArrayList<>();
 
         if(this.isFollowingPath)
@@ -110,24 +114,28 @@ public class LineDriver implements IContoller
             {
                 case TURNLEFT:
                 {
+                    BoeBot.wait(200);
+                    this.driveControl.onCommandReceived(new Command(Command.Commands.STOP, null));
 //                    parameters.add(Color.getHSBColor(0.5F, 1.0F, 1.0F));
 //                    this.notificationControl.excecuteCommand(new Command(Command.Commands.STARTFLASHCOLOR, parameters));
 //                    parameters.clear();
                     parameters.add(90);
-                    parameters.add(-200);
+                    parameters.add(-100);
                     this.driveControl.onCommandReceived(new Command(Command.Commands.TURNDEGREES, parameters));
-                    System.out.println("TURNLEFT");
+                    //System.out.println("TURNLEFT");
                     break;
                 }
                 case TURNRIGHT:
                 {
+                    BoeBot.wait(200);
+                    this.driveControl.onCommandReceived(new Command(Command.Commands.STOP, null));
 //                    parameters.add(Color.getHSBColor(1.0F, 1.0F, 1.0F));
 //                    this.notificationControl.excecuteCommand(new Command(Command.Commands.STARTFLASHCOLOR, parameters));
 //                    parameters.clear();
                     parameters.add(90);
-                    parameters.add(200);
+                    parameters.add(100);
                     this.driveControl.onCommandReceived(new Command(Command.Commands.TURNDEGREES, parameters));
-                    System.out.println("TURNRIGHT");
+                    //System.out.println("TURNRIGHT");
                     break;
                 }
                 case GOFORWARD:
@@ -137,15 +145,29 @@ public class LineDriver implements IContoller
 //                    parameters.clear();
                     parameters.add(this.speed);
                     this.driveControl.onCommandReceived(new Command(Command.Commands.SETSPEED, parameters));
-                    BoeBot.wait(500);
+                    BoeBot.wait(200);
                     this.isOnIntersection = false;
-                    System.out.println("GO FORWARD");
+                    //System.out.println("GO FORWARD");
                     break;
                 }
                 case FINISHED:
                 {
                     parameters.add(Color.getHSBColor(0.32F, 1.0F, 1.0F));
                     this.notificationControl.excecuteCommand(new Command(Command.Commands.STARTFLASHCOLOR, parameters));
+                    BoeBot.wait(10);
+                    System.out.println("START FLASHING");
+                    deactivateLineTracing();
+                    //BoeBot.wait(2);
+                    int delay = 0;
+                    while(delay <= 100)
+                    {
+                        delay++;
+                        BoeBot.wait(20);
+                        this.notificationControl.update(null);
+                    }
+                    System.out.println("END FLASHING");
+                    this.notificationControl.excecuteCommand(new Command(Command.Commands.STOPFLASHCOLOR, null));
+                    //BoeBot.wait(2);
                     break;
                 }
             }
@@ -169,6 +191,65 @@ public class LineDriver implements IContoller
         this.notificationControl.excecuteCommand(new Command(Command.Commands.STOPFLASHCOLOR, null));
         //this.driveControl.onCommandReceived(new Command(Command.Commands.STOPFLASHCOLOR, null));
         this.isLiningUp = false;
+    }
+
+    public void receivePathSequence()
+    {
+        ArrayList<Object> parameters = new ArrayList<>();
+        parameters.add(Color.getHSBColor(0.5F, 1.0F, 1.0F));
+        this.notificationControl.excecuteCommand(new Command(Command.Commands.STARTFLASHCOLOR, parameters));
+
+        boolean pathIsReceived = false;
+        boolean isReceiving = false;
+        Path path = new Path();
+
+        int lastX = -1;
+        int lastY = -1;
+
+        while(!pathIsReceived)
+        {
+            this.notificationControl.update(null);
+            int receivedData = this.bluetoothModule.receive();
+
+            if(receivedData != -1)
+            {
+                if(receivedData == 254)
+                {
+                    isReceiving = true;
+                }
+                if(receivedData == 253)
+                {
+                    isReceiving = false;
+                    pathIsReceived = true;
+                    break;
+                }
+
+                if(isReceiving == true && receivedData != 254 && receivedData != 253)
+                {
+                    if(lastX == -1)
+                    {
+                        lastX = receivedData;
+                    }
+                    else if(lastY == -1)
+                    {
+                        lastY = receivedData;
+                    }
+
+                    if(lastX != -1 && lastY != -1)
+                    {
+                        path.addPoint(new Vector2D((float)lastX, (float)lastY));
+
+                        lastX = -1;
+                        lastY = -1;
+                    }
+                }
+            }
+        }
+
+        this.pathFinder.setPath(path);
+        this.pathFinder.reset();
+
+        this.notificationControl.excecuteCommand(new Command(Command.Commands.STOPFLASHCOLOR, null));
     }
 
     public void onCommandReceived(Command command)
