@@ -185,7 +185,7 @@
    <left>
       <VBox fx:id="vboxLeft" prefHeight="425.0" prefWidth="188.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Boebot GUI v2.0" textAlignment="CENTER" textFill="WHITE" underline="true">
+            <Label text="Boebot GUI v2.1" textAlignment="CENTER" textFill="WHITE" underline="true">
                <font>
                   <Font name="Impact" size="27.0" />
                </font>

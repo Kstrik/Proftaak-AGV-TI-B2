@@ -30,7 +30,7 @@ public class Bluetooth implements ICommunicationSensor
         if(this.serialConnection.available() > 0)
         {
             int data = this.serialConnection.readByte();
-            System.out.println(data);
+            //System.out.println(data);
             return data;
         }
 

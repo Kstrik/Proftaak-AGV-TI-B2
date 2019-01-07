@@ -22,8 +22,8 @@ import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Controller implements Initializable {
-
+public class Controller implements Initializable
+{
 //    @FXML
 //    Button button_W;
 //    @FXML
@@ -47,8 +47,10 @@ public class Controller implements Initializable {
     Image selected = new Image("recources/crossroadsEnd.png");
     Image notSelected = new Image("recources/crossroads.jpg");
 
-    class Coordinate{
-        public Coordinate(int x, int y){
+    class Coordinate
+    {
+        public Coordinate(int x, int y)
+        {
             this.x = x;
             this.y = y;
         }
@@ -94,26 +96,32 @@ public class Controller implements Initializable {
     Label ultrasonicDistance;
 
 
-    Bluetooth btConnection = new Bluetooth("COM4");
+    Bluetooth btConnection = new Bluetooth("COM5");
 
 
-    public void sendCommand_W() {
-        if (mode_manual.isSelected()) {
+    public void sendCommand_W()
+    {
+        if (mode_manual.isSelected())
+        {
             btConnection.writeString("w");
             System.out.println("Button pressed: [W]");
         }
 
     }
 
-    public void sendCommand_A() {
-        if (mode_manual.isSelected()) {
+    public void sendCommand_A()
+    {
+        if (mode_manual.isSelected())
+        {
             btConnection.writeString("a");
             System.out.println("Button pressed: [A]");
         }
     }
 
-    public void sendCommand_S() {
-        if (mode_manual.isSelected()) {
+    public void sendCommand_S()
+    {
+        if (mode_manual.isSelected())
+        {
             btConnection.writeString("s");
             System.out.println("Button pressed: [S]");
         }
@@ -126,33 +134,44 @@ public class Controller implements Initializable {
         }
     }
 
-    public void sendCommand_Break() {
-        if (mode_manual.isSelected()) {
+    public void sendCommand_Break()
+    {
+        if (mode_manual.isSelected())
+        {
             btConnection.writeString("c");
             System.out.println("Button pressed: [Break]");
         }
     }
 
-    public void sendCommand_Stop() {
-        if (mode_manual.isSelected()) {
+    public void sendCommand_Stop()
+    {
+        if (mode_manual.isSelected())
+        {
             btConnection.writeString("x");
             System.out.println("Button pressed: [Stop]");
         }
     }
 
-    public void sendCommand_UpdateMode() {
-        if (mode_manual.isSelected()) {
-            btConnection.writeString("m");
-        } else if (mode_grid.isSelected()) {
-            btConnection.writeString("l");
-        } else if (mode_followline.isSelected()) {
+    public void sendCommand_UpdateMode()
+    {
+        if (mode_manual.isSelected())
+        {
+            //btConnection.writeString("m");
+        }
+        else if (mode_grid.isSelected())
+        {
+            //btConnection.writeString("l");
+        }
+        else if (mode_followline.isSelected())
+        {
             btConnection.writeString("l");
         }
         System.out.println("Button pressed: [Update Mode]");
     }
 
 
-    void update() {
+    void update()
+    {
         Timer timer = new Timer();
 
         timer.scheduleAtFixedRate(new TimerTask() {
@@ -160,10 +179,10 @@ public class Controller implements Initializable {
             @Override
             public void run() {
                 Platform.runLater(() -> {
-                    if (btConnected) {
-                        fetchData();
-                        updateGUIData();
-                    }
+//                    if (btConnected) {
+//                        fetchData();
+//                        updateGUIData();
+//                    }
 
                     fetchTestData();
                     updateGUIData();
@@ -171,16 +190,19 @@ public class Controller implements Initializable {
 
             }
         }, 0, 1000);
-
     }
 
 
-    public void tryBluetooth() {
-        if (btConnection.initialize()) {
+    public void tryBluetooth()
+    {
+        if (btConnection.initialize())
+        {
             System.out.println("Bluetooth Initialized");
             btConnected = true;
             connection_Dot.setFill(Paint.valueOf("#00ff00"));
-        } else {
+        }
+        else
+        {
             System.out.println("Bluetooth Connection Failed!!!");
             connection_Dot.setFill(Paint.valueOf("#ff0000"));
         }
@@ -270,14 +292,22 @@ public class Controller implements Initializable {
     public void sendCoordinates(){
 
         if(!coordinates.isEmpty()) {
-            btConnection.writeString("u");          //Initialize sending coordinates
+//            btConnection.writeString("u");          //Initialize sending coordinates
+//
+//            for (Coordinate c : coordinates) {
+//                btConnection.writeInt(c.x);                     // send X
+//                btConnection.writeInt(c.y);                     // send Y
+//            }
+//
+//            btConnection.writeString("i");          // Terminate
 
-            for (Coordinate c : coordinates) {
-                btConnection.writeInt(c.x);                     // send X
-                btConnection.writeInt(c.y);                     // send Y
+            btConnection.writeByte((byte)-2);
+            for(Coordinate coordinate : coordinates)
+            {
+                btConnection.writeByte((byte)coordinate.x);
+                btConnection.writeByte((byte)coordinate.y);
             }
-
-            btConnection.writeString("i");          // Terminate
+            btConnection.writeByte((byte)-3);
         } else{
             System.out.println("No coordinates entered");
             setX.setText("No");
@@ -327,36 +357,67 @@ public class Controller implements Initializable {
 
     }
 
-    public void onGridPressed00() {gridPressed(0,0, cross00);}
-    public void onGridPressed01() {gridPressed(0,1, cross01);}
+//    public void onGridPressed00() {gridPressed(0,0, cross00);}
+//    public void onGridPressed01() {gridPressed(0,1, cross01);}
+//    public void onGridPressed02() {gridPressed(0,2, cross02);}
+//    public void onGridPressed03() {gridPressed(0,3, cross03);}
+//    public void onGridPressed04() {gridPressed(0,4, cross04);}
+//    public void onGridPressed10() {gridPressed(1,0, cross10);}
+//    public void onGridPressed11() {gridPressed(1,1, cross11);}
+//    public void onGridPressed12() {gridPressed(1,2, cross12);}
+//    public void onGridPressed13() {gridPressed(1,3, cross13);}
+//    public void onGridPressed14() {gridPressed(1,4, cross14);}
+//    public void onGridPressed20() {gridPressed(2,0, cross20);}
+//    public void onGridPressed21() {gridPressed(2,1, cross21);}
+//    public void onGridPressed22() {gridPressed(2,2, cross22);}
+//    public void onGridPressed23() {gridPressed(2,3, cross23);}
+//    public void onGridPressed24() {gridPressed(2,4, cross24);}
+//    public void onGridPressed30() {gridPressed(3,0, cross30);}
+//    public void onGridPressed31() {gridPressed(3,1, cross31);}
+//    public void onGridPressed32() {gridPressed(3,2, cross32);}
+//    public void onGridPressed33() {gridPressed(3,3, cross33);}
+//    public void onGridPressed34() {gridPressed(3,4, cross34);}
+//    public void onGridPressed40() {gridPressed(4,0, cross40);}
+//    public void onGridPressed41() {gridPressed(4,1, cross41);}
+//    public void onGridPressed42() {gridPressed(4,2, cross42);}
+//    public void onGridPressed43() {gridPressed(4,3, cross43);}
+//    public void onGridPressed44() {gridPressed(4,4, cross44);}
+//    public void onGridPressed50() {gridPressed(5,0, cross50);}
+//    public void onGridPressed51() {gridPressed(5,1, cross51);}
+//    public void onGridPressed52() {gridPressed(5,2, cross52);}
+//    public void onGridPressed53() {gridPressed(5,3, cross53);}
+//    public void onGridPressed54() {gridPressed(5,4, cross54);}
+
+    public void onGridPressed00() {gridPressed(0,4, cross00);}
+    public void onGridPressed01() {gridPressed(0,3, cross01);}
     public void onGridPressed02() {gridPressed(0,2, cross02);}
-    public void onGridPressed03() {gridPressed(0,3, cross03);}
-    public void onGridPressed04() {gridPressed(0,4, cross04);}
-    public void onGridPressed10() {gridPressed(1,0, cross10);}
-    public void onGridPressed11() {gridPressed(1,1, cross11);}
+    public void onGridPressed03() {gridPressed(0,1, cross03);}
+    public void onGridPressed04() {gridPressed(0,0, cross04);}
+    public void onGridPressed10() {gridPressed(1,4, cross10);}
+    public void onGridPressed11() {gridPressed(1,3, cross11);}
     public void onGridPressed12() {gridPressed(1,2, cross12);}
-    public void onGridPressed13() {gridPressed(1,3, cross13);}
-    public void onGridPressed14() {gridPressed(1,4, cross14);}
-    public void onGridPressed20() {gridPressed(2,0, cross20);}
-    public void onGridPressed21() {gridPressed(2,1, cross21);}
+    public void onGridPressed13() {gridPressed(1,1, cross13);}
+    public void onGridPressed14() {gridPressed(1,0, cross14);}
+    public void onGridPressed20() {gridPressed(2,4, cross20);}
+    public void onGridPressed21() {gridPressed(2,3, cross21);}
     public void onGridPressed22() {gridPressed(2,2, cross22);}
-    public void onGridPressed23() {gridPressed(2,3, cross23);}
-    public void onGridPressed24() {gridPressed(2,4, cross24);}
-    public void onGridPressed30() {gridPressed(3,0, cross30);}
-    public void onGridPressed31() {gridPressed(3,1, cross31);}
+    public void onGridPressed23() {gridPressed(2,1, cross23);}
+    public void onGridPressed24() {gridPressed(2,0, cross24);}
+    public void onGridPressed30() {gridPressed(3,4, cross30);}
+    public void onGridPressed31() {gridPressed(3,3, cross31);}
     public void onGridPressed32() {gridPressed(3,2, cross32);}
-    public void onGridPressed33() {gridPressed(3,3, cross33);}
-    public void onGridPressed34() {gridPressed(3,4, cross34);}
-    public void onGridPressed40() {gridPressed(4,0, cross40);}
-    public void onGridPressed41() {gridPressed(4,1, cross41);}
+    public void onGridPressed33() {gridPressed(3,1, cross33);}
+    public void onGridPressed34() {gridPressed(3,0, cross34);}
+    public void onGridPressed40() {gridPressed(4,4, cross40);}
+    public void onGridPressed41() {gridPressed(4,3, cross41);}
     public void onGridPressed42() {gridPressed(4,2, cross42);}
-    public void onGridPressed43() {gridPressed(4,3, cross43);}
-    public void onGridPressed44() {gridPressed(4,4, cross44);}
-    public void onGridPressed50() {gridPressed(5,0, cross50);}
-    public void onGridPressed51() {gridPressed(5,1, cross51);}
+    public void onGridPressed43() {gridPressed(4,1, cross43);}
+    public void onGridPressed44() {gridPressed(4,0, cross44);}
+    public void onGridPressed50() {gridPressed(5,4, cross50);}
+    public void onGridPressed51() {gridPressed(5,3, cross51);}
     public void onGridPressed52() {gridPressed(5,2, cross52);}
-    public void onGridPressed53() {gridPressed(5,3, cross53);}
-    public void onGridPressed54() {gridPressed(5,4, cross54);}
+    public void onGridPressed53() {gridPressed(5,1, cross53);}
+    public void onGridPressed54() {gridPressed(5,0, cross54);}
 
 
     @FXML

@@ -16,15 +16,16 @@ import javafx.stage.Stage;
 
 import java.beans.EventHandler;
 
-public class GUI extends Application {
-
+public class GUI extends Application
+{
     public final int HEIGHT = 480;
     public final int WIDTH = 720;
-    Bluetooth bluetooth = new Bluetooth("COM4");
+    Bluetooth bluetooth = new Bluetooth("COM5");
 
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception
+    {
        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
 //        bluetooth.initialize();
@@ -80,7 +81,6 @@ public class GUI extends Application {
         primaryStage.setAlwaysOnTop(true);
         primaryStage.show();
     }
-
 }
 
 

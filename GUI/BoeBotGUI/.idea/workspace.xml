@@ -97,6 +97,35 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="1873999283">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="510" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="510" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="fxml" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="XML" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FavoritesManager">
     <favorites_list name="JavaFxApplication" />
@@ -106,7 +135,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="170">
               <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -120,8 +149,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+            <state relative-caret-position="1224">
+              <caret line="72" column="10" lean-forward="true" selection-start-line="72" selection-start-column="10" selection-end-line="72" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -132,12 +161,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Bluetooth.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+            <state relative-caret-position="375">
+              <caret line="83" column="44" lean-forward="true" selection-start-line="83" selection-start-column="44" selection-end-line="83" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#236#237#0" expanded="true" />
-                <element signature="e#328#329#0" expanded="true" />
+                <element signature="e#241#242#0" expanded="true" />
+                <element signature="e#333#334#0" expanded="true" />
+                <element signature="e#380#381#0" expanded="true" />
+                <element signature="e#440#441#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -146,60 +177,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="276" column="73" lean-forward="true" selection-start-line="276" selection-start-column="73" selection-end-line="276" selection-end-column="73" />
+            <state relative-caret-position="322">
+              <caret line="420" lean-forward="true" selection-start-line="420" selection-end-line="420" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#828#839#0" />
-                <element signature="e#1351#1525#0" />
-                <element signature="e#1377#1467#0" />
-                <element signature="e#2045#2229#0" />
-                <element signature="e#2235#2418#0" />
-                <element signature="e#2424#2607#0" />
-                <element signature="e#2613#2796#0" />
-                <element signature="e#2802#2993#0" />
-                <element signature="e#2999#3188#0" />
-                <element signature="e#3194#3574#0" />
-                <element signature="e#3581#4058#0" />
-                <element signature="e#3774#4013#0" />
-                <element signature="e#4065#4446#0" />
-                <element signature="e#4452#4801#0" />
-                <element signature="e#4807#5648#0" />
-                <element signature="e#5751#6841#0" />
-                <element signature="e#5655#5809#0" />
-                <element signature="e#5816#6377#0" />
-                <element signature="e#6384#6472#0" />
-                <element signature="e#6479#6732#0" />
-                <element signature="e#6738#6796#0" />
-                <element signature="e#6801#6859#0" />
-                <element signature="e#6864#6922#0" />
-                <element signature="e#6927#6985#0" />
-                <element signature="e#6990#7048#0" />
-                <element signature="e#7053#7111#0" />
-                <element signature="e#7116#7174#0" />
-                <element signature="e#7179#7237#0" />
-                <element signature="e#7242#7300#0" />
-                <element signature="e#7305#7363#0" />
-                <element signature="e#7368#7426#0" />
-                <element signature="e#7431#7489#0" />
-                <element signature="e#7494#7552#0" />
-                <element signature="e#7557#7615#0" />
-                <element signature="e#7620#7678#0" />
-                <element signature="e#7683#7741#0" />
-                <element signature="e#7746#7804#0" />
-                <element signature="e#7809#7867#0" />
-                <element signature="e#7872#7930#0" />
-                <element signature="e#7935#7993#0" />
-                <element signature="e#7998#8056#0" />
-                <element signature="e#8061#8119#0" />
-                <element signature="e#8124#8182#0" />
-                <element signature="e#8187#8245#0" />
-                <element signature="e#8250#8308#0" />
-                <element signature="e#8313#8371#0" />
-                <element signature="e#8376#8434#0" />
-                <element signature="e#8439#8497#0" />
-                <element signature="e#8502#8560#0" />
-                <element signature="e#8565#8623#0" />
               </folding>
             </state>
           </provider>
@@ -209,8 +190,8 @@
         <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="31" column="100" selection-start-line="31" selection-start-column="100" selection-end-line="31" selection-end-column="100" />
+            <state relative-caret-position="1964">
+              <caret line="243" column="20" lean-forward="true" selection-start-line="243" selection-start-column="20" selection-end-line="243" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -239,24 +220,35 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/sample/KeyInput.java" />
-        <option value="$PROJECT_DIR$/src/sample/Bluetooth.java" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
-        <option value="$PROJECT_DIR$/src/sample/GUI.java" />
         <option value="$PROJECT_DIR$/src/sample/sample.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/GUI.java" />
+        <option value="$PROJECT_DIR$/src/sample/Bluetooth.java" />
         <option value="$PROJECT_DIR$/src/sample/Controller.java" />
       </list>
     </option>
   </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-11" />
-    <option name="width" value="1301" />
-    <option name="height" value="1391" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
   </component>
@@ -265,6 +257,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -277,13 +271,17 @@
               <item name="BoeBotGUI" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="BoeBotGUI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BoeBotGUI" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -295,12 +293,13 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546717750303" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546783179470" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="C:/Program Files (x86)/Oracle/JavaFX Scene Builder 2.0/JavaFX Scene Builder 2.0.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../School/Leerjaar 2018-2019/Periode 2/Hardware Interfacing &amp; Meten/Les 5/Jssc/Jssc/jssc-2.8.0.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
@@ -398,37 +397,38 @@
       <option name="presentableId" value="Default" />
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
+      <workItem from="1546778148240" duration="5023000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1302000" />
+    <option name="totallyTimeSpent" value="6325000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1721" height="935" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.11860325" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.120272316" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="Image Layers" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Capture Tool" order="6" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32917705" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2830424" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.28196722" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Application Servers" order="7" />
-      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Problems" order="9" />
       <window_info anchor="bottom" id="Changes" order="10" />
       <window_info anchor="bottom" id="Profiler" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" weight="0.32917705" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.32793018" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.32786885" />
       <window_info anchor="bottom" id="TMC Test Results" order="14" />
       <window_info anchor="bottom" id="Boebot Uploader" order="15" />
       <window_info anchor="bottom" id="Terminal" order="16" />
@@ -440,11 +440,14 @@
       <window_info anchor="right" id="Palette" order="5" />
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="right" id="Coverage" order="7" side_tool="true" />
-      <window_info anchor="right" id="TMC Project List" order="8" />
+      <window_info anchor="right" id="TMC Project List" order="8" weight="0.32980332" />
       <window_info anchor="right" id="Capture Analysis" order="9" />
       <window_info anchor="right" id="Palette&#9;" order="10" />
       <window_info anchor="right" id="Theme Preview" order="11" />
     </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -459,44 +462,14 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/sample/KeyInput.java" />
-    <entry file="jar://$USER_HOME$/Downloads/jssc-2.8.0.jar!/jssc/SerialPortEventListener.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_172/javafx-src.zip!/com/sun/glass/ui/win/WinApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="176" selection-start-line="176" selection-end-line="176" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_172/javafx-src.zip!/javafx/scene/input/KeyEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="281" column="24" selection-start-line="281" selection-start-column="24" selection-end-line="281" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_172/javafx-src.zip!/com/sun/javafx/application/LauncherImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="122" column="23" selection-start-line="122" selection-start-column="23" selection-end-line="122" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_172/javafx-src.zip!/javafx/application/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="190" column="27" selection-start-line="190" selection-start-column="27" selection-end-line="190" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/jssc-2.8.0.jar!/jssc/SerialPortEventListener.class" />
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_172/javafx-src.zip!/com/sun/glass/ui/win/WinApplication.java" />
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_172/javafx-src.zip!/javafx/scene/input/KeyEvent.java" />
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_172/javafx-src.zip!/com/sun/javafx/application/LauncherImpl.java" />
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_172/javafx-src.zip!/javafx/application/Application.java" />
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="170">
           <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -508,22 +481,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+        <state relative-caret-position="1224">
+          <caret line="72" column="10" lean-forward="true" selection-start-line="72" selection-start-column="10" selection-end-line="72" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Bluetooth.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#236#237#0" expanded="true" />
-            <element signature="e#328#329#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -531,67 +492,31 @@
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="31" column="100" selection-start-line="31" selection-start-column="100" selection-end-line="31" selection-end-column="100" />
+        <state relative-caret-position="1964">
+          <caret line="243" column="20" lean-forward="true" selection-start-line="243" selection-start-column="20" selection-end-line="243" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Bluetooth.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="83" column="44" lean-forward="true" selection-start-line="83" selection-start-column="44" selection-end-line="83" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#241#242#0" expanded="true" />
+            <element signature="e#333#334#0" expanded="true" />
+            <element signature="e#380#381#0" expanded="true" />
+            <element signature="e#440#441#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="276" column="73" lean-forward="true" selection-start-line="276" selection-start-column="73" selection-end-line="276" selection-end-column="73" />
+        <state relative-caret-position="322">
+          <caret line="420" lean-forward="true" selection-start-line="420" selection-end-line="420" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#828#839#0" />
-            <element signature="e#1351#1525#0" />
-            <element signature="e#1377#1467#0" />
-            <element signature="e#2045#2229#0" />
-            <element signature="e#2235#2418#0" />
-            <element signature="e#2424#2607#0" />
-            <element signature="e#2613#2796#0" />
-            <element signature="e#2802#2993#0" />
-            <element signature="e#2999#3188#0" />
-            <element signature="e#3194#3574#0" />
-            <element signature="e#3581#4058#0" />
-            <element signature="e#3774#4013#0" />
-            <element signature="e#4065#4446#0" />
-            <element signature="e#4452#4801#0" />
-            <element signature="e#4807#5648#0" />
-            <element signature="e#5751#6841#0" />
-            <element signature="e#5655#5809#0" />
-            <element signature="e#5816#6377#0" />
-            <element signature="e#6384#6472#0" />
-            <element signature="e#6479#6732#0" />
-            <element signature="e#6738#6796#0" />
-            <element signature="e#6801#6859#0" />
-            <element signature="e#6864#6922#0" />
-            <element signature="e#6927#6985#0" />
-            <element signature="e#6990#7048#0" />
-            <element signature="e#7053#7111#0" />
-            <element signature="e#7116#7174#0" />
-            <element signature="e#7179#7237#0" />
-            <element signature="e#7242#7300#0" />
-            <element signature="e#7305#7363#0" />
-            <element signature="e#7368#7426#0" />
-            <element signature="e#7431#7489#0" />
-            <element signature="e#7494#7552#0" />
-            <element signature="e#7557#7615#0" />
-            <element signature="e#7620#7678#0" />
-            <element signature="e#7683#7741#0" />
-            <element signature="e#7746#7804#0" />
-            <element signature="e#7809#7867#0" />
-            <element signature="e#7872#7930#0" />
-            <element signature="e#7935#7993#0" />
-            <element signature="e#7998#8056#0" />
-            <element signature="e#8061#8119#0" />
-            <element signature="e#8124#8182#0" />
-            <element signature="e#8187#8245#0" />
-            <element signature="e#8250#8308#0" />
-            <element signature="e#8313#8371#0" />
-            <element signature="e#8376#8434#0" />
-            <element signature="e#8439#8497#0" />
-            <element signature="e#8502#8560#0" />
-            <element signature="e#8565#8623#0" />
           </folding>
         </state>
       </provider>
@@ -607,7 +532,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
