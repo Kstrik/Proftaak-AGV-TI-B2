@@ -146,7 +146,7 @@ public class GridSelectionComponent extends Canvas
 
                     for(Vector2D gridPosition : node.getNeigbourNodesGridPositions())
                     {
-                        if(gridPosition.x >= 0 && gridPosition.x <= this.grid.getGridWidth() && gridPosition.y >= 0 && gridPosition.y <= this.grid.getGridHeight())
+                        if(gridPosition.x >= 0 && gridPosition.x < this.grid.getGridWidth() && gridPosition.y >= 0 && gridPosition.y < this.grid.getGridHeight())
                         {
                             if(this.grid.getNode((int)gridPosition.x, (int)gridPosition.y).isSelected())
                             {
