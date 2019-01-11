@@ -120,7 +120,7 @@ public class LineDriver implements IContoller
 //                    this.notificationControl.excecuteCommand(new Command(Command.Commands.STARTFLASHCOLOR, parameters));
 //                    parameters.clear();
                     parameters.add(90);
-                    parameters.add(-100);
+                    parameters.add(-50);
                     this.driveControl.onCommandReceived(new Command(Command.Commands.TURNDEGREES, parameters));
                     //System.out.println("TURNLEFT");
                     break;
@@ -133,7 +133,7 @@ public class LineDriver implements IContoller
 //                    this.notificationControl.excecuteCommand(new Command(Command.Commands.STARTFLASHCOLOR, parameters));
 //                    parameters.clear();
                     parameters.add(90);
-                    parameters.add(100);
+                    parameters.add(50);
                     this.driveControl.onCommandReceived(new Command(Command.Commands.TURNDEGREES, parameters));
                     //System.out.println("TURNRIGHT");
                     break;
