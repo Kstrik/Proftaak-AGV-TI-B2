@@ -15,7 +15,14 @@ public class Bluetooth implements ICommunicationSensor
     {
         this.serialConnection = new SerialConnection(baudRate);
         this.bluetoothConnection = bluetoothConnection;
-        this.timer = new Timer(200);
+        this.timer = new Timer(500);
+    }
+
+    public Bluetooth(int baudRate)
+    {
+        this.serialConnection = new SerialConnection(baudRate);
+        this.bluetoothConnection = null;
+        this.timer = null;
     }
 
     public Integer receive()
@@ -23,13 +30,13 @@ public class Bluetooth implements ICommunicationSensor
         if(this.serialConnection.available() > 0)
         {
             int data = this.serialConnection.readByte();
-
+            //System.out.println(data);
             return data;
         }
 
-        BoeBot.wait(1);
+        //BoeBot.wait(1);
 
-        return 0;
+        return -1;
     }
 
     public void transmit(Object data)
@@ -47,10 +54,9 @@ public class Bluetooth implements ICommunicationSensor
         {
             int data = receive();
 
-            if(data != 0)
+            if(data != -1)
             {
                 this.bluetoothConnection.onSignalReceived(data);
-                System.out.println(data);
             }
         }
     }

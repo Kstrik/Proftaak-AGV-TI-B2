@@ -69,8 +69,21 @@ public class EngineControl
             degrees = -360;
         }
 
-        double interval = ((((double)2150 / (double)360) / (double)100) * (double)turnSpeed) * (double)degrees;
+        double interval = 0.0;
 
+        if(turnSpeed == 50 || turnSpeed == -50)
+        {
+            interval = ((((double)6450 / (double)360) / (double)100) * (double)turnSpeed) * (double)degrees;
+        }
+        else
+        {
+            interval = ((((double)2150 / (double)360) / (double)100) * (double)turnSpeed) * (double)degrees;
+        }
+
+        if(interval < 0)
+        {
+            interval *= -1;
+        }
         //System.out.println(interval);
 
         this.engines.get(0).setTurnSpeed(turnSpeed);

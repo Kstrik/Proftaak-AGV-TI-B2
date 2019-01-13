@@ -33,6 +33,8 @@ public class InfraredSignal implements ISignal
         this.commandBindings.put(1040, Command.Commands.MAKERECTANGLE);
         //Knop Toggle Line Tracing
         this.commandBindings.put(4048, Command.Commands.TOGGLELINETRACING);
+        //Knop Receive Path
+        this.commandBindings.put(1336, Command.Commands.RECEIVEPATH);
     }
 
     public int convertPulsesToInt()

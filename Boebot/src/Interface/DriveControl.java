@@ -21,18 +21,41 @@ public class DriveControl implements IContoller
     public DriveControl()
     {
         Path path = new Path();
+//        path.addPoint(new Vector2D(0, 0));
+//        path.addPoint(new Vector2D(0, 1));
+//        path.addPoint(new Vector2D(0, 2));
+//        path.addPoint(new Vector2D(1, 2));
+//        path.addPoint(new Vector2D(1, 3));
+
         path.addPoint(new Vector2D(0, 0));
         path.addPoint(new Vector2D(0, 1));
-        path.addPoint(new Vector2D(0, 2));
-        path.addPoint(new Vector2D(1, 2));
-        path.addPoint(new Vector2D(1, 3));
+        path.addPoint(new Vector2D(1, 1));
+        path.addPoint(new Vector2D(2, 1));
+        path.addPoint(new Vector2D(2, 0));
+//        path.addPoint(new Vector2D(3, 0));
+//        path.addPoint(new Vector2D(3, 1));
+//        path.addPoint(new Vector2D(3, 2));
+
+//        path.addPoint(new Vector2D(0, 0));
+//        path.addPoint(new Vector2D(0, 1));
+//        path.addPoint(new Vector2D(1, 2));
+//        path.addPoint(new Vector2D(0, 2));
+
+//        path.addPoint(new Vector2D(0, 0));
+////        path.addPoint(new Vector2D(0, 1));
+//        path.addPoint(new Vector2D(0, 2));
+//        path.addPoint(new Vector2D(1, 2));
+
+//        path.addPoint(new Vector2D(0, 0));
+//        path.addPoint(new Vector2D(1, 1));
+//        path.addPoint(new Vector2D(1, 2));
 
         this.communication = new Communication(this);
         this.engineControl = new EngineControl();
         this.collisionDetector = new CollisionDetector(this);
         this.notificationControl = new NotificationControl();
         this.lineDriver = new LineDriver(this, 50, false, new PathFinder(Vector2D.Up(), new Grid(10, 10), path), true, this.notificationControl);
-        this.lastCommand = null;
+        this.lastCommand = new Command(Command.Commands.NONE, null);
     }
 
     public void onCommandReceived(Command command)
@@ -82,6 +105,11 @@ public class DriveControl implements IContoller
                 }
                 break;
             }
+            case RECEIVEPATH:
+            {
+                this.lineDriver.receivePathSequence();
+                break;
+            }
         }
     }
 
@@ -103,17 +131,27 @@ public class DriveControl implements IContoller
                 this.engineControl.update(null);
             }
         }
-        else
-        {
-            if(this.lastCommand.getCommand() == Command.Commands.GOBACKWARD && this.engineControl.isStationairy())
-            {
-
-//            }
-//            if(this.lastCommand.getCommand() != Command.Commands.GOBACKWARD && !this.engineControl.isStationairy())
+//        else
+//        {
+//            //System.out.println(this.lastCommand.getCommand().toString());
+//            if(this.lastCommand.getCommand() == Command.Commands.GOBACKWARD)
 //            {
-                Command command = new Command(Command.Commands.STOP, null);
-                this.engineControl.update(command);
-            }
-        }
+//                this.engineControl.update(this.lastCommand);
+//            }
+////            if(this.lastCommand.getCommand() == Command.Commands.GOBACKWARD && this.engineControl.isStationairy())
+////            {
+////
+//////            }
+//////            if(this.lastCommand.getCommand() != Command.Commands.GOBACKWARD && !this.engineControl.isStationairy())
+//////            {
+////                Command command = new Command(Command.Commands.STOP, null);
+////                this.engineControl.update(command);
+////            }
+//        }
+    }
+
+    public Command.Commands getLastCommand()
+    {
+        return this.lastCommand.getCommand();
     }
 }

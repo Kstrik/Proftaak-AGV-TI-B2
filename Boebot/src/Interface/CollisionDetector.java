@@ -3,6 +3,7 @@ package Interface;
 import Hardware.UltrasonicSensor;
 import Hardware.Antenna;
 import Hardware.ISensor;
+import TI.BoeBot;
 
 import javax.imageio.metadata.IIOMetadataController;
 import java.util.ArrayList;
@@ -21,6 +22,8 @@ public class CollisionDetector implements IUltrasoneUpdate, IAntennaUpdate
 
     private IContoller driveControl;
 
+    private boolean isMovingBackward;
+
 
     public CollisionDetector(IContoller driveControl)
     {
@@ -33,6 +36,8 @@ public class CollisionDetector implements IUltrasoneUpdate, IAntennaUpdate
         //this.sensors.add(this.antennaR);
 
         this.driveControl = driveControl;
+
+        this.isMovingBackward = false;
     }
 
 
@@ -73,8 +78,24 @@ public class CollisionDetector implements IUltrasoneUpdate, IAntennaUpdate
             this.driveControl.onCommandReceived(speakerCommand);
         }
 
-        if(collisionDetected())
+        if(collisionDetected() && this.isMovingBackward == false)
         {
+            this.isMovingBackward = true;
+            //Command command = new Command(Command.Commands.STOP, null);
+            //this.driveControl.onCommandReceived(command);
+
+            ArrayList<Object> parameters = new ArrayList<>();
+            parameters.add(-50);
+
+            Command command = new Command(Command.Commands.SETSPEED, parameters);
+
+            this.driveControl.onCommandReceived(command);
+        }
+
+        if(!collisionDetected() && this.isMovingBackward == true)
+        {
+            this.isMovingBackward = false;
+
             Command command = new Command(Command.Commands.STOP, null);
             this.driveControl.onCommandReceived(command);
         }
