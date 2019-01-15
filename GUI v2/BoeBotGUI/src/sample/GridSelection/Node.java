@@ -132,7 +132,7 @@ public class Node
     public void draw(GraphicsContext graphicsContext)
     {
         graphicsContext.setFill(getColorFromState());
-        graphicsContext.fillArc(this.position.x, this.position.y, (this.radius * this.scale), (this.radius * this.scale), 0, 360, ArcType.ROUND);
+        graphicsContext.fillArc(this.position.x - (this.radius * this.scale), this.position.y - (this.radius * this.scale), ((this.radius * 2) * this.scale), ((this.radius * 2) * this.scale), 0, 360, ArcType.ROUND);
     }
 
     public Vector2D[] getNeigbourNodesGridPositions()

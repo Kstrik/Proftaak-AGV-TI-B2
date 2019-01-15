@@ -54,7 +54,7 @@ public class Grid
             for(int x = 0; x < this.gridWidth; x++)
             {
                 Vector2D nodePosition = new Vector2D((this.position.x + ((x * this.gridNodePixelSize) -1) + (this.gridNodePixelSize / 2)), this.position.y + (((y * this.gridNodePixelSize) -1) + (this.gridNodePixelSize / 2)));
-                this.gridNodes[y][x] = new Node(nodePosition, new Vector2D(x, (this.gridHeight - y) - 1), this.scale, (this.gridNodePixelSize / 2), this.colorTheme);
+                this.gridNodes[y][x] = new Node(nodePosition, new Vector2D(x, (this.gridHeight - y) - 1), this.scale, (this.gridNodePixelSize / 4), this.colorTheme);
             }
         }
     }
